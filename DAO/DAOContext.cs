@@ -20,7 +20,7 @@ namespace desafio_pontotel_backend.DAO
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseNpgsql("User ID=dtxhrirjjhhoaz;Password=8123f444992df73892db2e939cf4c8347acd70dc216a723d4c23857b408a10af;Host=ec2-34-226-18-183.compute-1.amazonaws.com;Port=5432;Database=da28e9qpcmjlhr;Pooling=true;SSL Mode=Prefer;TrustServerCertificate=True;");
+                optionsBuilder.UseNpgsql("User ID=rqgfubzwxzjkru;Password=2c89f0cbff5d6fd1241b106759ffcad49887ee1b440805d58fe2a19e2a6c576b;Host=ec2-107-23-41-227.compute-1.amazonaws.com;Port=5432;Database=d8cmuicfvstea5;Pooling=true;SSL Mode=Prefer;TrustServerCertificate=True;");
                 optionsBuilder.EnableDetailedErrors();
                 optionsBuilder.EnableSensitiveDataLogging();
                 base.OnConfiguring(optionsBuilder);
