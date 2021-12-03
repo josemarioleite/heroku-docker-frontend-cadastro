@@ -18,7 +18,6 @@ module.exports = configure(function (ctx) {
       chainWebpack () {},
     },
     devServer: {
-      host: 'desafio-pontotel-frontend.herokuapp.com',
       https: true,
       port: 3535,
       open: true,

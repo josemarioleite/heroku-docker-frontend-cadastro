@@ -71,7 +71,7 @@ export default {
     },
     authLogin () {
       this.validateData().then(() => {
-        this.confirmAction('Deseja realmente se cadastrar ?').then(() => {
+        this.confirmAction('Deseja realmente se logar ?').then(() => {
           this.lockButton = true
           var user = new User()
 
@@ -80,10 +80,10 @@ export default {
           user.Password = this.password
 
           try {
-            this.$q.loading.show({
-              message: 'Aguarde enquanto verificamos...'
-            })
             Post('auth/login', user).then(async (res) => {
+              this.$q.loading.show({
+                message: 'Aguarde enquanto verificamos...'
+              })
               localStorage.setItem('token', res.data.token)
               localStorage.setItem('tokenContent', await DecodeJWT())
               setTimeout(() => {
@@ -100,24 +100,26 @@ export default {
                   })
                 }
               }, 250)
+            }).catch(err => {
+              console.log(err)
+              this.$q.notify({
+                message: 'Erro ao fazer autenticação',
+                color: 'red'
+              })
               this.timer = setTimeout(() => {
                 this.$q.loading.hide()
                 this.timer = void 0
               }, 1000)
-            }).catch(err => {
-              console.log(err)
-              this.$q.notify({
-                message: res.data.msg,
-                color: 'red'
-              })
             })
           } catch (exc) {
             console.log(exc)
           } finally {
-            this.lockButton = false            
+            this.lockButton = false          
           }
-          this.$q.loading.hide()
-          this.timer = void 0
+          this.timer = setTimeout(() => {
+            this.$q.loading.hide()
+            this.timer = void 0
+          }, 1000)
         })
       })
     },
